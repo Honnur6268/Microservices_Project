@@ -1,0 +1,21 @@
+server:
+  port: 9091
+spring:
+  config:
+    import: optional:configserver:http://localhost:9080
+  application:
+    name: greet
+
+management:
+  security:
+    enabled: false
+
+  endpoint:
+    restart:
+      enabled: true
+      
+      
+  endpoints:
+    web:
+      exposure:
+        include: restart
