@@ -1,0 +1,25 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: CLOUD-API-GATEWAY
+  cloud:
+    gateway:
+      discovery.locator:
+        enabled: true
+        lowerCaseServiceId: true
+      routes:
+      - id: STOCK-PRICE-API
+#        uri: lb://WELCOME-API
+        uri: lb://STOCK-PRICE-API
+        predicates:
+        - Path=/api/stock/**
+      - id: STOCK-PRICE-CALCI-API
+        uri: lb://STOCK-PRICE-CALCI-API
+        predicates:
+        - Path=/stock/**
+        
+  main:
+    web-application-type: reactive
+  
