@@ -1,0 +1,47 @@
+spring:
+  application.name: circuitbreaker-resilience4j-App
+
+management:
+  endpoints.web.exposure.include:
+    - '*'
+  endpoint.health.show-details: always
+  health.circuitbreakers.enabled: true
+
+#Defualt configuration for all circuit breaker
+#resilience4j.circuitbreaker:
+#  configs:
+#    default:
+#      registerHealthIndicator: true
+##      sliding-window-type: time-based #By default count based
+#      slidingWindowSize: 15
+#      minimumNumberOfCalls: 5
+#      permittedNumberOfCallsInHalfOpenState: 3
+#      automaticTransitionFromOpenToHalfOpenEnabled: true
+#      waitDurationInOpenState: 5s
+#      failureRateThreshold: 50
+#      eventConsumerBufferSize: 10
+
+#Different configuration for each circuit breaker
+resilience4j:
+  circuitbreaker:
+    instances:
+      boredApiFallBack:
+        registerHealthIndicator: true
+#         sliding-window-type: time-based #By default count based
+        slidingWindowSize: 15
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+      pokemonApiFallBack:
+        registerHealthIndicator: true
+#       sliding-window-type: time-based #By default count based
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 6
+        permittedNumberOfCallsInHalfOpenState: 4
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 40
+        eventConsumerBufferSize: 10
