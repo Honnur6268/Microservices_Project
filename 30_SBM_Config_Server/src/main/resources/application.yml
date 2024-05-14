@@ -1,0 +1,24 @@
+server:
+  port: 9080
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Honnur6268/Configuration_Properties.git
+          clone-on-start: true
+
+management:
+  security:
+    enabled: false
+
+  endpoint:
+    restart:
+      enabled: true
+      
+      
+  endpoints:
+    web:
+      exposure:
+        include: restart
