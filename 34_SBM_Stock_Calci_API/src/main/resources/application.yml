@@ -1,0 +1,37 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: STOCK-PRICE-CALCI-API
+  config:
+    import: optional:configserver:http://localhost:9080
+    
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:1111/
+##  eureka:
+##    client:
+##      serviceUrl:
+##        defaultZone: http://localhost:8761/
+#  
+#management:
+#  endpoints.web.exposure.include:
+#    - '*'
+#  endpoint.health.show-details: always
+#  health.circuitbreakers.enabled: true
+#
+##Defualt configuration for all circuit breaker
+#resilience4j.circuitbreaker:
+#  configs:
+#    default:
+#      registerHealthIndicator: true
+##      sliding-window-type: time-based #By default count based
+#      slidingWindowSize: 10
+#      minimumNumberOfCalls: 5
+#      permittedNumberOfCallsInHalfOpenState: 3
+#      automaticTransitionFromOpenToHalfOpenEnabled: true
+#      waitDurationInOpenState: 10s
+#      failureRateThreshold: 50
+# 
